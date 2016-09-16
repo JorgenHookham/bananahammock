@@ -22,6 +22,17 @@ module.exports = function (grunt) {
             }
         },
 
+        copy: {
+            scripts: {
+                files: [{
+                    expand: true,
+                    cwd: 'development/scripts',
+                    src: '**/*.js',
+                    dest: 'compiled/scripts',
+                }]
+            }
+        },
+
         sass: {
             dist: {
                 files: [{
@@ -40,6 +51,11 @@ module.exports = function (grunt) {
                 files: ['development/styles/**/*.scss'],
                 tasks: ['sass:dist']
             },
+            js: {
+                options: {interrupt: true, livereload: true},
+                files: ['development/scripts/**/*.js'],
+                tasks: ['copy:scripts']
+            },
             styles: {
                 options: {livereload: true},
                 files: ['compiled/styles/**/*.css']
@@ -51,6 +67,6 @@ module.exports = function (grunt) {
         }
     });
 
-    grunt.registerTask('default', ['clean', 'sass', 'connect', 'watch']);
+    grunt.registerTask('default', ['clean', 'copy', 'sass', 'connect', 'watch']);
 
 }
