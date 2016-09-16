@@ -12,17 +12,22 @@ h1 {
     text-transform: capitalize;
 }
 
+h2 {
+    font-size: 3rem;
+}
+
 
 // Colours
 
 $indigo: hsl(240, 68, 16);
+$nightshade: hsl(240, 24, 4);
 
 
 // Hero component
 
 $color-hero-dark: $indigo;
 $color-hero-dark-highlight: lighten(saturate($color-hero-dark, 4%), 8%);
-$color-hero-dark-text-shadow: lighten(desaturate($color-hero-dark-highlight, 32%), 16%);
+$color-hero-dark-text-shadow: lighten(desaturate($color-hero-dark-highlight, 32%), 24%);
 
 .hero {
     display: flex;
@@ -43,7 +48,7 @@ $color-hero-dark-text-shadow: lighten(desaturate($color-hero-dark-highlight, 32%
     > h1:after {
         content: '';
         display: block;
-        width: 80%; height: 1px;
+        width: 68%; height: 1px;
         margin: .5em auto 0;
         background-color: rgba(white, .16);
         box-shadow: 0 0 8px rgba(white, .16);
@@ -128,8 +133,9 @@ $super-logo-size: 4rem;
             color: white;
             font-size: 1.125rem;
             text-decoration: none;
-            text-shadow: none;
-            transition: all ease-out 320ms;
+            text-shadow: 0 0 8px rgba($color-hero-dark-text-shadow, 0);
+            transition: all ease-out 240ms;
+            opacity: .9;
 
             &:after {
                 content: '';
@@ -138,12 +144,14 @@ $super-logo-size: 4rem;
                 height: 1px;
                 margin: 5px auto 0;
                 background-color: rgba(white, .32);
-                transition: all ease-out 320ms;
+                transition: all ease-out 240ms;
                 box-shadow: 0 0 6px rgba(white, 0);
             }
 
             &:hover {
-                transform: scale(1.1);
+                // transform: scale(1.1);
+                text-shadow: 0 0 8px rgba($color-hero-dark-text-shadow, 1);
+                opacity: 1;
 
                 &:after {
                     width: 90%;
@@ -175,7 +183,7 @@ $super-logo-size: 4rem;
 @keyframes breathe {
     0% {
         transform: scaleY(1) translateY(-2rem);
-        opacity: .12;
+        opacity: .04;
     }
     32% {
         transform: scaleY(1) translateY(0rem);
@@ -183,6 +191,94 @@ $super-logo-size: 4rem;
     }
     100% {
         transform: scaleY(1) translateY(-2rem);
-        opacity: .12;
+        opacity: .04;
+    }
+}
+
+
+// Dark Horse
+
+.dark-horse {
+    height: 100vh;
+    border-top: 1px solid lighten(desaturate($nightshade, 32%), 12%);
+    background-color: $nightshade;
+    color: white;
+    overflow: hidden;
+
+    h2:before {
+        content: '';
+        display: block;
+        width: 100%; height: 1px;
+        margin: 0 auto .5em;
+        background-color: rgba(white, .16);
+        box-shadow: 0 0 8px rgba(white, .16);
+    }
+
+    h2:after {
+        content: '';
+        display: block;
+        width: 100%; height: 1px;
+        margin: .5em auto 0;
+        background-color: rgba(white, .16);
+        box-shadow: 0 0 8px rgba(white, .16);
+    }
+}
+
+.dark-horse-aside {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 32%; height: 100%;
+    float: right;
+}
+
+
+// Grid
+
+$grid-item-size: 16rem;
+$grid-item-margin: 2rem;
+$grid-cols: 4;
+
+.grid-container {
+    width: 68%;
+    float: left;
+}
+
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    width: $grid-item-size * $grid-cols + $grid-item-margin * ($grid-cols - 1);
+    transform: rotateY(32deg) rotateZ(-8deg);
+}
+
+.grid-item {
+    box-sizing: border-box;
+    flex-shrink: 0;
+    width: $grid-item-size; height: $grid-item-size * .75;
+    background-color: rgba(white, 0);
+    border: 6px solid rgba(white, .12);
+    margin: 0 $grid-item-margin $grid-item-margin 0;
+    transform: background-color 320ms;
+
+    animation: conveyor 5s linear infinite;
+
+    &:nth-child(#{$grid-cols}n) { margin-right: 0; }
+
+    &:hover {
+        background-color: rgba(white, .08);
+        cursor: pointer;
+    }
+}
+
+.grid:hover .grid-item {
+    animation-play-state: paused;
+}
+
+@keyframes conveyor {
+    0% {
+        transform: translateY(-$grid-item-size * .75) translateX(-10rem);
+    }
+    100% {
+        transform: translateY(-$grid-item-size * .75 * 2 - $grid-item-margin) translateX(-10rem);
     }
 }
