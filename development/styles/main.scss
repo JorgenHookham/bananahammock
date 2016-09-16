@@ -1,4 +1,188 @@
+// Type
+
+@import url(https://fonts.googleapis.com/css?family=Alegreya+Sans+SC:300i,500|corbel:600|Alegreya:400i|Roboto);
+
+html, body { font-family: roboto; }
+
+h1, h2, h3, h4, h5, h6 { font-family: 'Alegreya Sans SC', Helvetica, sans-serif; }
+
+h1 {
+    font-size: 4rem;
+    font-weight: normal;
+    text-transform: capitalize;
+}
+
+
+// Colours
+
+$indigo: hsl(240, 68, 16);
+
+
+// Hero component
+
+$color-hero-dark: $indigo;
+$color-hero-dark-highlight: lighten(saturate($color-hero-dark, 4%), 8%);
+$color-hero-dark-text-shadow: lighten(desaturate($color-hero-dark-highlight, 32%), 16%);
+
 .hero {
+    display: flex;
+    box-sizing: border-box;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
     height: 100vh;
-    background-color: red;
+    padding: 1rem;
+
+    background-image: linear-gradient($color-hero-dark, $color-hero-dark-highlight);
+
+    color: white;
+    text-shadow: 0 0 68px $color-hero-dark-text-shadow;
+
+    > h1, > h2, > h3, > h4, > h5, > h6 { margin: 0; }
+
+    > h1:after {
+        content: '';
+        display: block;
+        width: 80%; height: 1px;
+        margin: .5em auto 0;
+        background-color: rgba(white, .16);
+        box-shadow: 0 0 8px rgba(white, .16);
+    }
+}
+
+
+// Super logo
+
+$super-logo-size: 4rem;
+
+.super {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.super-logo {
+    width: $super-logo-size; height: $super-logo-size;
+    border: 3px solid white;
+    border-radius: 8%;
+    box-shadow: 0 0 16px $color-hero-dark-text-shadow, 0 0 16px $color-hero-dark-text-shadow inset;
+
+    font-family: corbel;
+    font-size: $super-logo-size;
+    font-weight: 600;
+    line-height: .82em;
+    text-align: center;
+    text-shadow: 0 0 16px $color-hero-dark-text-shadow;
+}
+
+.super-word {
+    font-family: corbel, 'Alegreya Sans SC';
+    font-weight: 400;
+    margin: .5rem 0 0;
+    font-size: $super-logo-size - 2rem;
+}
+
+
+// Title
+
+.title {
+    display: flex;
+    align-items: center;
+
+    .super {
+        margin-right: 1rem;
+        padding-right: 1rem;
+        border-right: 1px solid rgba(white, .16);
+    }
+}
+
+.title-tag {
+    font-family: Alegreya;
+    font-size: 1.32rem;
+}
+
+
+// Header
+
+.header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+// Navigation
+
+.navigation {
+    display: flex;
+    align-items: center;
+
+    > li {
+        display: block;
+        margin-left: 2rem;
+
+        > a {
+            display: block;
+            padding: 5px 0;
+            color: white;
+            font-size: 1.125rem;
+            text-decoration: none;
+            text-shadow: none;
+            transition: all ease-out 320ms;
+
+            &:after {
+                content: '';
+                display: block;
+                width: 16px;
+                height: 1px;
+                margin: 5px auto 0;
+                background-color: rgba(white, .32);
+                transition: all ease-out 320ms;
+                box-shadow: 0 0 6px rgba(white, 0);
+            }
+
+            &:hover {
+                transform: scale(1.1);
+
+                &:after {
+                    width: 90%;
+                    background-color: rgba(white, .8);
+                    box-shadow: 0 0 6px rgba(white, .32);
+                }
+            }
+        }
+    }
+}
+
+
+// Pointer
+
+.pointer {
+    transform: scaleY(1);
+    animation: breathe 5s infinite ease-out;
+}
+
+.pointer-arrow {
+    width: .68rem; height: .68rem;
+    border: 3px none white;
+    border-right-style: solid;
+    border-bottom-style: solid;
+    // border-radius: 4px;
+    transform: rotate(45deg);
+}
+
+@keyframes breathe {
+    0% {
+        transform: scaleY(1) translateY(-2rem);
+        opacity: .12;
+    }
+    32% {
+        transform: scaleY(1) translateY(0rem);
+        opacity: .68;
+    }
+    100% {
+        transform: scaleY(1) translateY(-2rem);
+        opacity: .12;
+    }
 }

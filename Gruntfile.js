@@ -43,6 +43,10 @@ module.exports = function (grunt) {
             styles: {
                 options: {livereload: true},
                 files: ['compiled/styles/**/*.css']
+            },
+            html: {
+                options: {livereload: true},
+                files: ['**/*.html']
             }
         }
     });
