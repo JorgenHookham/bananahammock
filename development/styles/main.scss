@@ -19,14 +19,14 @@ h2 {
 
 // Colours
 
-$indigo: hsl(240, 68, 16);
+$indigo: hsl(250, 68, 16);
 $nightshade: hsl(240, 24, 4);
 
 
 // Hero component
 
 $color-hero-dark: $indigo;
-$color-hero-dark-highlight: lighten(saturate($color-hero-dark, 4%), 8%);
+$color-hero-dark-highlight: hsl(250, 68, 20);
 $color-hero-dark-text-shadow: lighten(desaturate($color-hero-dark-highlight, 32%), 24%);
 
 .hero {
@@ -41,7 +41,7 @@ $color-hero-dark-text-shadow: lighten(desaturate($color-hero-dark-highlight, 32%
     background-image: linear-gradient($color-hero-dark, $color-hero-dark-highlight);
 
     color: white;
-    text-shadow: 0 0 68px $color-hero-dark-text-shadow;
+    // text-shadow: 0 0 68px $color-hero-dark-text-shadow;
 
     > h1, > h2, > h3, > h4, > h5, > h6 { margin: 0; }
 
@@ -224,16 +224,16 @@ $super-logo-size: 4rem;
         box-shadow: 0 0 8px rgba(white, .16);
     }
 
-    // &:before {
-    //     content: '';
-    //     position: absolute;
-    //     z-index: 10;
-    //     top: 0; left: 0;
-    //     display: block;
-    //     width: 100%;
-    //     height: 80px;
-    //     background-image: linear-gradient(rgba($nightshade, 1), rgba($nightshade, 0));
-    // }
+    &:before {
+        content: '';
+        position: absolute;
+        z-index: 10;
+        top: 0; left: 0;
+        display: block;
+        width: 100%;
+        height: 160px;
+        background-image: linear-gradient(rgba($nightshade, 1), rgba($nightshade, 0));
+    }
 
     // &:after {
     //     content: '';
@@ -268,7 +268,7 @@ $grid-cols: 4;
 }
 
 .grid {
-    transform: rotateY(32deg) rotateZ(-8deg);
+    transform: rotateY(32deg) rotateZ(-6deg);
 }
 
 .grid-track {
@@ -281,7 +281,7 @@ $grid-cols: 4;
 .grid-item {
     box-sizing: border-box;
     flex-shrink: 0;
-    width: $grid-item-size; height: $grid-item-size * .75;
+    width: $grid-item-size; height: $grid-item-size * .68;
     margin: 0 $grid-item-margin $grid-item-margin 0;
     perspective: 1000px;
 
@@ -308,7 +308,7 @@ $grid-cols: 4;
     .front {
         box-sizing: border-box;
         background-color: $nightshade;
-        border: 6px solid lighten($nightshade, 8%);
+        border: 6px solid lighten($nightshade, 12%);
         transform: rotateY(0);
         z-index: 2;
     }
@@ -326,9 +326,9 @@ $grid-cols: 4;
 
 @keyframes conveyor {
     0% {
-        transform: translateY(-$grid-item-size * .75) translateX(-10rem);
+        transform: translateY(-$grid-item-size * .68) translateX(-10rem);
     }
     100% {
-        transform: translateY(-$grid-item-size * .75 * 2 - $grid-item-margin) translateX(-10rem);
+        transform: translateY(-$grid-item-size * .68 * 2 - $grid-item-margin) translateX(-10rem);
     }
 }
