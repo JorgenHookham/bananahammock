@@ -13,7 +13,7 @@ h1 {
 }
 
 h2 {
-    font-size: 3rem;
+    font-size: 2.4rem;
 }
 
 h3 {
@@ -436,4 +436,30 @@ $grid-cols: 4;
     h3 {
         color: lighten($indigo, 80%);
     }
+}
+
+// Section describing sokanu consumer
+
+.sokanu-consumer {
+    height: 80vh;
+    background-color: #F8F8F2;
+    overflow: hidden;
+    text-align: center;
+}
+
+.by3 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    > * {
+        width: 320px;
+    }
+}
+
+.nounplace {
+    width: 80px; height: 80px;
+    margin: 0 auto;
+    background-color: #F2F2F0;
+    border-radius: 50%;
 }
